@@ -10,13 +10,11 @@
 
 
 ## Todo
-- make test ui
-- basic go router
-- add sqlite db to send posts
-- html views
-- add post
-- edit post
-- delte post
+- [x] make test ui
+- [x] basic go router
+- [x] add sqlite db to send posts
+- [ ] html views
+- [ ] add post
+- [ ] edit post
+- [ ] delte post
 
-/usr/local/go/bin
-export PATH=$PATH:/usr/local/go/bin
