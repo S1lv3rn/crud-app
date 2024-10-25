@@ -13,7 +13,7 @@ Controllers:
 import (
     "net/http"
     "html/template"
-    "strconv"
+    //"strconv" - use this to get id
 )
 
 var funcMap = template.FuncMap{

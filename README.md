@@ -13,7 +13,8 @@
 - [x] make test ui
 - [x] basic go router
 - [x] add sqlite db to send posts
-- [ ] html views
+- [x] html views
+- [ ] how to select table in sqlite & in golang
 - [ ] add post
 - [ ] edit post
 - [ ] delte post

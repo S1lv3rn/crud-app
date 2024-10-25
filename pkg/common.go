@@ -26,10 +26,7 @@ type HomePage struct {
     Page
 }
 
-type ProjectPage struct {
-    Page
-    Project
-}
+
 
 
 

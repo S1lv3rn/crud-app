@@ -26,10 +26,10 @@
             <p class="date-text">created: {{formatDate .Created}} , edited: {{formatDate .Updated}}</p> 
         <p>{{.Text}}</p>
         <form>
-            <sl-button formAction="/post/{{Id}}/edit" variant="primary" size="medium" outline pill>
+            <sl-button formAction="/post/{{.Id}}/edit" variant="primary" size="medium" outline pill>
                 Edit
             </sl-button>
-            <sl-button formAction="/post/{{Id}}/delete" variant="danger" size="medium" outline pill>
+            <sl-button formAction="/post/{{.Id}}/delete" variant="danger" size="medium" outline pill>
                 Delete
             </sl-button>
         </form>

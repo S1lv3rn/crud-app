@@ -1,7 +1,7 @@
 package pkg
 
 import (
-    "net/http"
+    //"net/http"
 )
 
 // BUISNESS MODELS
@@ -20,11 +20,3 @@ func getHomeData() HomePage {
     }
 }
 
-func getProjectData(id int, w http.ResponseWriter) (ProjectPage, error) {
-    p, err := getProjectById(id)
-
-    return ProjectPage {
-        Page: getPageData(p.Title),
-        Project: p,
-    }, err
-}

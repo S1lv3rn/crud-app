@@ -1,10 +1,8 @@
 package pkg
 
 import (
-    "errors"
-
+    //"errors"
 	"database/sql"
-	"fmt"
 	"log"
 	"time"
 
@@ -18,28 +16,39 @@ import (
 
 func getAllPosts() []Post {
 
-	db, err := sql.Open("sqlite3", "data/crud.db")
+	db, err := sql.Open("sqlite3", "crud.db")
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
+		return nil
 	}
+	log.Print("Connected to db")
 
 	defer db.Close()
 
 
-	result, err := db.Query("SELECT * FROM posts ORDER BY createdOn")
+	rows, err := db.Query("SELECT * FROM main.posts ORDER BY createdOn")
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
+		return nil
 	}
 
-	defer result.Close()
+	log.Print("Got the results")
+
+	if (!rows.Next()) { 
+		log.Print("Empty List!")
+		return nil
+	}
+
+	defer rows.Close()
 	var posts []Post
 
 	
-	for result.Next() {
+	for rows.Next() {
 		var temp Post
 		
-		if err := result.Scan(&temp.Id, &temp.Text, &tempBook.Created, &tempBook.Updated); err != nil {
-			log.Fatal(err)
+		if err := rows.Scan(&temp.Id, &temp.Text, &temp.Created, &temp.Updated); err != nil {
+			log.Print(err)
+			return nil
 		}
 		posts = append(posts, temp)
 	}
@@ -60,14 +69,18 @@ func addPost(text string) bool {
 
 
 	stmt, err := db.Prepare("INSERT INTO posts(text, createdOn) VALUES(?, ?)")
-	_, err := stmt.Query(text, now.UnixMilli())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	result, err := stmt.Query(text, time.Now().UnixMilli())
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
 
-    return true
+    return result != nil
 }
 
 func deletePost(id int64) {
@@ -80,6 +93,6 @@ func updatePostText(id int64, newText string) {
 }
 
 
-func getPostById(id int) (Post, error) {
+func getPostById(id int) {
     
 }
