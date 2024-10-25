@@ -17,3 +17,6 @@
 - add post
 - edit post
 - delte post
+
+/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin

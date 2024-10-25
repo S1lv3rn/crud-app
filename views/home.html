@@ -1,0 +1,49 @@
+{{ template "header" .Page}}
+
+    <sl-card class="new-post">
+        <h2 slot="header">New Post</h2>
+        <form action="/post/add" method="POST">
+            <sl-textarea resize="none" help-text="Post something!"></sl-textarea>
+            <sl-button type="submit" variant="primary" size="medium" pill>
+                Post!
+            </sl-button>
+        </form>
+    </sl-card>
+
+    <br/>
+    <br/>
+
+    <sl-card class="post-list">
+        <h2 slot="header">Latest Posts</h2>
+
+
+        {{ if .Page.Posts }}
+            {{range .Page.Posts}}
+        
+        <sl-divider></sl-divider>
+
+        <div class="post">
+            <p class="date-text">created: {{formatDate .Created}} , edited: {{formatDate .Updated}}</p> 
+        <p>{{.Text}}</p>
+        <form>
+            <sl-button formAction="/post/{{Id}}/edit" variant="primary" size="medium" outline pill>
+                Edit
+            </sl-button>
+            <sl-button formAction="/post/{{Id}}/delete" variant="danger" size="medium" outline pill>
+                Delete
+            </sl-button>
+        </form>
+        </div>
+            {{end}}
+    
+    {{ else }}
+    
+        <p>No projects yet! Make one!</p>
+    
+    {{ end }}
+
+        
+    </sl-card>
+
+
+{{ template "footer" }}
