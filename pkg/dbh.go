@@ -16,7 +16,7 @@ import (
 
 func getAllPosts() []Post {
 
-	db, err := sql.Open("sqlite3", "crud.db")
+	db, err := sql.Open("sqlite3", "data/crud.db")
 	if err != nil {
 		log.Print(err)
 		return nil
