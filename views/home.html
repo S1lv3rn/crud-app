@@ -20,7 +20,7 @@
         {{ if .Page.Posts }}
             {{range .Page.Posts}}
         
-        <sl-divider></sl-divider>
+        
 
         <div class="post">
             <p class="date-text">created: {{formatDate .Created}} , edited: {{formatDate .Updated}}</p> 
@@ -34,7 +34,11 @@
             </sl-button>
         </form>
         </div>
+
+        <sl-divider></sl-divider>
             {{end}}
+
+        <p>No more posts!</p>
     
     {{ else }}
     

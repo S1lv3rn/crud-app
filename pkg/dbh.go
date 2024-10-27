@@ -34,10 +34,6 @@ func getAllPosts() []Post {
 
 	log.Print("Got the results")
 
-	if (!rows.Next()) { 
-		log.Print("Empty List!")
-		return nil
-	}
 
 	defer rows.Close()
 	var posts []Post
@@ -50,6 +46,7 @@ func getAllPosts() []Post {
 			log.Print(err)
 			return nil
 		}
+		//log.Print("Got the results")
 		posts = append(posts, temp)
 	}
 
